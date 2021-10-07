@@ -1,0 +1,22 @@
+{
+  "name": "jeremytools",
+  "version": "1.0.0",
+  "description": "Jeremy's Front-End Support Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuaAppa/jeremytools.git"
+  },
+  "keywords": [
+    "Jeremy"
+  ],
+  "author": "Jeremy Winchester Park",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SuaAppa/jeremytools/issues"
+  },
+  "homepage": "https://github.com/SuaAppa/jeremytools#readme"
+}
