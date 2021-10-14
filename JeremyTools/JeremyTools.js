@@ -4,10 +4,20 @@ class JellyCheckBoxOfJT extends HTMLElement {
     }
     connectedCallback(){
         let text=this.getAttribute('text');
+        let ID=this.getAttribute('ID');
+        let init=this.getAttribute('init');
+        let value=this.getAttribute('value');
+        let color=this.getAttribute('color');
+        let checked;
+        if(init==="on"){
+            checked="checked"
+        }else{
+            checked="";
+        }
         this.attachShadow({mode : 'open'});
         this.shadowRoot.innerHTML = `
         <label class="checkbox">
-        <input type="checkbox"/>
+        <input type="checkbox" id="${ID}" ${checked} value="${value}" />
         <span class="icon"></span>
         <span class="text">${text}</span>
         </label>
@@ -47,7 +57,7 @@ class JellyCheckBoxOfJT extends HTMLElement {
             }
             .checkbox input:checked ~ .icon {
                 border-color:transparent;
-                background:#ff1616;
+                background:${color};
                 animation:jelly 0.6s ease;
             }
 
@@ -70,3 +80,13 @@ class JellyCheckBoxOfJT extends HTMLElement {
     }
 }
 customElements.define("jeremy-jellycheckbox", JellyCheckBoxOfJT);
+
+//shadowDOM 접근
+const getJellyCheckBox = (obj) => {
+    let selector = document.querySelectorAll("jeremy-jellycheckbox");
+    let shadowSelector;
+    selector.forEach(item => {
+        shadowSelector = item.shadowRoot.getElementById(obj);
+    })
+    return shadowSelector;
+}
