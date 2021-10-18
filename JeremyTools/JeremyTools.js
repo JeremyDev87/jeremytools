@@ -3,11 +3,11 @@ class JellyCheckBoxOfJT extends HTMLElement {
         super();
     }
     connectedCallback(){
-        let text=this.getAttribute('text');
-        let ID=this.getAttribute('ID');
-        let init=this.getAttribute('init');
-        let value=this.getAttribute('value');
-        let color=this.getAttribute('color');
+        let text=this.getAttribute('text') ?? '';
+        let ID=this.getAttribute('ID') ?? 'jellydefault';
+        let init=this.getAttribute('init') ?? '';
+        let value=this.getAttribute('value') ?? '';
+        let color=this.getAttribute('color') ?? '#ff1616';
         let checked;
         if(init==="on"){
             checked="checked"
