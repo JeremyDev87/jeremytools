@@ -5,11 +5,11 @@ first commit Oct 7, 2021 by Jeremy Winchester.
 -------------
 
 ***
-*JellyCheckBox
+* JellyCheckBox
 ```
  <jeremy-jellycheckbox></jeremy-jellycheckbox>
 ```
-**It can use some attribute for help to using tools Like this..
+** It can use some attribute for help to using tools Like this..
 ```
 <jeremy-jellycheckbox 
 text="Put label text in" 
@@ -20,9 +20,9 @@ color="blue"
 >
 </jeremy-jellycheckbox>
 ```
-***1. text
-***2. ID
-***3. init
-***4. value
-***5. color
+*** 1. text
+*** 2. ID
+*** 3. init
+*** 4. value
+*** 5. color
 
