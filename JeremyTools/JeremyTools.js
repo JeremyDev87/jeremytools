@@ -90,3 +90,36 @@ const getJellyCheckBox = (obj) => {
     })
     return shadowSelector;
 }
+
+
+class LoadingOfJT extends HTMLElement {
+    constructor(){
+        super();
+    }
+    connectedCallback(){
+        this.attachShadow({mode : 'open'});
+        this.shadowRoot.innerHTML = `
+        <div class="loader"></div>
+        <style>
+            .loader {
+                border : 16px solid #f3f3f3;
+                border-top : 16px solid #3498db;
+                border-radius:50%;
+                width:120px;
+                height:120px;
+                animation : spin 2s linear infinite;
+                position:fixed;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+            }
+            @keyframes spin {
+                0% {transform:translate(-50%,-50%) rotate(0deg);}
+                100% {transform:translate(-50%,-50%) rotate(360deg);}
+            }
+        </style>
+        `
+    }
+}
+customElements.define("jeremy-loading", LoadingOfJT);
+
