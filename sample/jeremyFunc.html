@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jeremy Func</title>
+</head>
+<style>
+    .JFinfo {
+        margin:auto;
+        padding:1rem;
+    }
+    td,th{
+        border : 1px solid lightgray;
+        padding:1rem;
+        margin:0.5rem;
+        text-align: center;
+    }
+    th{
+        background-color: lightgray;
+    }
+    td:nth-child(4){
+        text-align: left;
+    }
+</style>
+<body>
+    <table class="JFinfo">
+        <thead>
+            <th>Name</th>
+            <th>UseCase</th>
+            <th>Result</th>
+            <th>Description</th>
+        </thead>
+        <tbody id="JFinfoList">
+        </tbody>
+    </table>
+</body>
+
+</html>
+<script type="text/javascript" src="../JeremyTools/JeremyFuncs.js"></script>
+<script type="text/javascript">
+    window.onload = () => {
+        UseCaseMakeRandom();
+        UseCaseTransDatetime();
+    }
+    const MakeTablePart = (col1,col2,col3,col4) =>{
+        let tdMaker = document.createElement('tr');
+        let htmlMaker =  '';
+        htmlMaker += `<td>${col1}</td>`;
+        htmlMaker += `<td>${col2}</td>`;
+        htmlMaker += `<td>${col3}</td>`;
+        htmlMaker += `<td>${col4}</td>`;
+        tdMaker.innerHTML = htmlMaker;
+        document.getElementById('JFinfoList').append(tdMaker);
+    }
+
+    const UseCaseMakeRandom = () => {
+        let col1 = "MakeRandom";
+        let col2 = "MakeRandom(min,max)";
+        let col3 = MakeRandom(1,10);
+        let col4 =" - min <= x <= max 범위 내 난수를 생성하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4);
+    }
+    const UseCaseTransDatetime = () => {
+        let date = new Date();
+
+        let col1 = "TransDatetime";
+        let col2 = "TransDatetime(date,'y.m.d t')";
+        let col3 = TransDatetime(date,'y.m.d t');
+        let col4 =" - 날짜의 형태를 원하는 양식으로 리턴(문자열) 한다.";
+        col4 += "<br/> - y:년, m:월, d:일, t:시간";
+        col4 += "<br/> - 시간은 동일양식(t:m:s)";
+        MakeTablePart(col1,col2,col3,col4);
+    }
+
+</script>
