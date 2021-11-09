@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jeremy Func</title>
+</head>
+<style>
+    .JFinfo {
+        margin:auto;
+        padding:1rem;
+    }
+    td,th{
+        border : 1px solid lightgray;
+        padding:1rem;
+        margin:0.5rem;
+        text-align: center;
+    }
+    th{
+        background-color: lightgray;
+    }
+    td {
+        font-size: x-small;
+    }
+    td:nth-child(4), td:nth-child(6){
+        text-align: left;
+    }
+</style>
+<body>
+    <table class="JFinfo">
+        <thead>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Form</th>
+            <th>UseCase</th>
+            <th>Result</th>
+            <th>Description</th>
+        </thead>
+        <tbody id="JFinfoList">
+        </tbody>
+    </table>
+</body>
+
+</html>
+<script type="text/javascript" src="../JeremyTools/JeremyFuns.js"></script>
+<script type="text/javascript">
+    window.onload = () => {
+        UseCaseGetRandom();
+        UseCaseTransDatetime();
+        UseCaseAddNumberComma();
+        UseCaseDelNumberComma();
+        UseCaseTransPhoneNumStyle();
+        UseCaseGetPresentURL();
+        UseCaseGetPresentLanguage();
+        UseCaseGetPresentWidth();
+        UseCaseGetPresentHeight();
+        UseCaseGetPresentIP();
+    }
+    const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
+        let tdMaker = document.createElement('tr');
+        let htmlMaker =  '';
+        htmlMaker += `<td>${col1}</td>`;
+        htmlMaker += `<td>${col2}</td>`;
+        htmlMaker += `<td>${col3}</td>`;
+        htmlMaker += `<td>${col4}</td>`;
+        htmlMaker += `<td>${col5}</td>`;
+        htmlMaker += `<td>${col6}</td>`;
+        tdMaker.innerHTML = htmlMaker;
+        document.getElementById('JFinfoList').append(tdMaker);
+    }
+
+    const UseCaseGetRandom = () => {
+        let col1 = "1";
+        let col2 = "GetRandom";
+        let col3 = "GetRandom(min,max)";
+        let col4 = "GetRandom(1,10)";
+        let col5 = GetRandom(1,10);
+        let col6 =" - min <= x <= max 범위 내 난수를 생성하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransDatetime = () => {
+        let date = new Date();
+        let col1 = "2";
+        let col2 = "TransDatetime";
+        let col3 = "TransDatetime(date:datetime,type:string)";
+        let col4 = "let date = new Date();<br/>";
+        col4 += "TransDatetime(date,'y.m.d t');";
+        let col5 = TransDatetime(date,'y-m-d t');
+        let col6 =" - 날짜의 형태를 원하는 양식으로 리턴한다.";
+        col6 += "<br/> - y:년, m:월, d:일, t:시간";
+        col6 += "<br/> - 시간은 동일양식(t:m:s)";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseAddNumberComma = () => {
+        let col1 = "3";
+        let col2 = "AddNumberComma";
+        let col3 = "AddNumberComma(num:number)";
+        let col4 = "AddNumberComma(1000)";
+        let col5 = AddNumberComma(1000);
+        let col6 =" - 숫자에 콤마(,) 표기를 추가하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseDelNumberComma = () => {
+        let col1 = "4";
+        let col2 = "DelNumberComma";
+        let col3 = "DelNumberComma(num:string)";
+        let col4 = "DelNumberComma('1,000')";
+        let col5 = DelNumberComma('1,000');
+        let col6 =" - 숫자에 콤마(,) 표기를 제거하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransPhoneNumStyle = () => {
+        let col1 = "5";
+        let col2 = "TransPhoneNumStyle";
+        let col3 = "TransPhoneNumStyle(num:string)";
+        let col4 = "TransPhoneNumStyle('01012345678')";
+        let col5 = TransPhoneNumStyle('01012345678');
+        let col6 =" - 숫자를 전화번호 형태로 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseGetPresentURL = () => {
+        let col1 = "6";
+        let col2 = "GetPresentURL";
+        let col3 = "GetPresentURL()";
+        let col4 = "GetPresentURL()";
+        let col5 = GetPresentURL();
+        let col6 =" - 현재의 URL을 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseGetPresentLanguage = () => {
+        let col1 = "7";
+        let col2 = "GetPresentLanguage";
+        let col3 = "GetPresentLanguage()";
+        let col4 = "GetPresentLanguage()";
+        let col5 = GetPresentLanguage();
+        let col6 =" - 현재의 사용자의 브라우저 언어를 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseGetPresentWidth = () => {
+        let col1 = "8";
+        let col2 = "GetPresentWidth";
+        let col3 = "GetPresentWidth()";
+        let col4 = "GetPresentWidth()";
+        let col5 = GetPresentWidth();
+        let col6 =" - 현재의 사용자의 브라우저 가로사이즈를 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseGetPresentHeight = () => {
+        let col1 = "9";
+        let col2 = "GetPresentHeight";
+        let col3 = "GetPresentHeight()";
+        let col4 = "GetPresentHeight()";
+        let col5 = GetPresentHeight();
+        let col6 =" - 현재의 사용자의 브라우저 세로사이즈를 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseGetPresentIP = () => {
+        let col1 = "10";
+        let col2 = "GetPresentIP";
+        let col3 = "GetPresentIP()";
+        let col4 = "GetPresentIP()";
+        let col5 = 'IP';
+        let col6 =" - 현재의 사용자의 IP를 리턴한다.";
+        GetPresentIP().then(result=>{
+            col5 = result.ip;
+            MakeTablePart(col1,col2,col3,col4,col5,col6);
+        });
+    }
+</script>
