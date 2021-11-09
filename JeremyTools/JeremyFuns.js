@@ -77,7 +77,7 @@ const GetPresentWidth = () => {
 const GetPresentHeight = () => {
     return window.screen.height;
 }
-const GetPresentIP = async () => {
+const GetPresentIP = () => {
     return new Promise((resolve,reject)=>{
         fetch('https://ipinfo.io/json')
         .then(result=>{
