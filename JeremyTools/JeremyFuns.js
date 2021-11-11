@@ -65,18 +65,24 @@ const TransPhoneNumStyle = (num) => {
     var regexp = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/; 
     return num.replace(regexp, "$1-$2-$3");
 }
+//현재 URL을 리턴
 const GetPresentURL = () => {
     return window.location.href;
 }
+//현재 브라우저의 언어를 리턴
 const GetPresentLanguage = () => {
     return window.navigator.language;
 }
+//현재 브라우저의 가로사이즈를 리턴
 const GetPresentWidth = () => {
     return window.screen.width;
 }
+//현재 브라우저의 세로사이즈를 리턴
 const GetPresentHeight = () => {
     return window.screen.height;
 }
+//현재 브라우저의 IP를 리턴
+//API호출, 비동기 처리
 const GetPresentIP = () => {
     return new Promise((resolve,reject)=>{
         fetch('https://ipinfo.io/json')
@@ -84,4 +90,68 @@ const GetPresentIP = () => {
             resolve(result.json());
         })
     })
+}
+//Scroll위치를 이동시킨다.
+const GoScrollXY = (x,y) => {
+    window.scrollTo(x, y);
+}
+//Scroll위치를 맨 위로 이동시킨다.
+const GoScrollTOP = () => {
+    window.scrollTo(0, 0);
+}
+//특수 문자 존재를 확인한다
+const CheckSpecialChar = (str) => {
+    let specialChar = "`~!@#$%^&*_+=|\\[]{}:;,<.>/?'\"";
+    for(let i=0, len=specialChar.length; i<len; i++) {
+        if(str.indexOf(specialChar.substr(i,1)) != -1){
+            return true;
+        }
+    }
+    return  false;
+}
+//이메일 형식을 valid한다
+const CheckEmailStyle = (str) => {
+    if (str.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+//소수점 이하 0 찍어서 리턴한다
+const TransRoundZero = (num,setLength) => {
+    let strNum = ("" + num).replace(/,/g, "");
+    let arrNum = strNum.split(".");
+    if(arrNum.length<=1) {
+        num = arrNum[0]+".";
+        for(let i=0;i<setLength;i++){
+            num += "0";
+        }
+    }else if(arrNum[1].length<setLength){
+        for(let i=arrNum[1].length;i<setLength;i++){
+            num += "0";
+        }
+    }else{
+        num = (Math.round(num*(Math.pow(10,setLength))))/(Math.pow(10, setLength));
+    }
+    return num;
+}
+//소수점 자리수 이하 반올림한다.
+const TransRound = (num,setLength) => {
+    if(!setLength) setLength = 0;
+    return (Math.round(num*(Math.pow(10,setLength))))/(Math.pow(10, setLength));
+}
+//진수 변환기
+const TransAntiLog = (num,log) => {
+    num = num+0;
+    log = log+0;
+    let returnVal = '';
+    for(let i=0;num/log>=1;i++) {
+        console.log(num);
+        returnVal += String(parseInt(num/log));
+        num = num%log;
+        console.log(returnVal);
+        console.log(num);
+    }
+    return returnVal + String(num);
 }

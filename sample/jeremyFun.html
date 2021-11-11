@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jeremy Func</title>
+    <title>jeremy Fun</title>
 </head>
 <style>
     .JFinfo {
@@ -56,6 +56,13 @@
         UseCaseGetPresentWidth();
         UseCaseGetPresentHeight();
         UseCaseGetPresentIP();
+        UseCaseGoScrollXY();
+        UseCaseGoScrollTOP();
+        UseCaseCheckSpecialChar();
+        UseCaseCheckEmailStyle();
+        UseCaseTransRound();
+        UseCaseTransRoundZero();
+        UseCaseTransAntiLog();
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -71,7 +78,7 @@
     }
 
     const UseCaseGetRandom = () => {
-        let col1 = "1";
+        let col1 = "";
         let col2 = "GetRandom";
         let col3 = "GetRandom(min,max)";
         let col4 = "GetRandom(1,10)";
@@ -81,7 +88,7 @@
     }
     const UseCaseTransDatetime = () => {
         let date = new Date();
-        let col1 = "2";
+        let col1 = "";
         let col2 = "TransDatetime";
         let col3 = "TransDatetime(date:datetime,type:string)";
         let col4 = "let date = new Date();<br/>";
@@ -93,7 +100,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseAddNumberComma = () => {
-        let col1 = "3";
+        let col1 = "";
         let col2 = "AddNumberComma";
         let col3 = "AddNumberComma(num:number)";
         let col4 = "AddNumberComma(1000)";
@@ -102,7 +109,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseDelNumberComma = () => {
-        let col1 = "4";
+        let col1 = "";
         let col2 = "DelNumberComma";
         let col3 = "DelNumberComma(num:string)";
         let col4 = "DelNumberComma('1,000')";
@@ -111,7 +118,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseTransPhoneNumStyle = () => {
-        let col1 = "5";
+        let col1 = "";
         let col2 = "TransPhoneNumStyle";
         let col3 = "TransPhoneNumStyle(num:string)";
         let col4 = "TransPhoneNumStyle('01012345678')";
@@ -120,7 +127,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseGetPresentURL = () => {
-        let col1 = "6";
+        let col1 = "";
         let col2 = "GetPresentURL";
         let col3 = "GetPresentURL()";
         let col4 = "GetPresentURL()";
@@ -129,7 +136,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseGetPresentLanguage = () => {
-        let col1 = "7";
+        let col1 = "";
         let col2 = "GetPresentLanguage";
         let col3 = "GetPresentLanguage()";
         let col4 = "GetPresentLanguage()";
@@ -138,7 +145,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseGetPresentWidth = () => {
-        let col1 = "8";
+        let col1 = "";
         let col2 = "GetPresentWidth";
         let col3 = "GetPresentWidth()";
         let col4 = "GetPresentWidth()";
@@ -147,7 +154,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseGetPresentHeight = () => {
-        let col1 = "9";
+        let col1 = "";
         let col2 = "GetPresentHeight";
         let col3 = "GetPresentHeight()";
         let col4 = "GetPresentHeight()";
@@ -156,7 +163,7 @@
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseGetPresentIP = async () => {
-        let col1 = "10";
+        let col1 = "";
         let col2 = "GetPresentIP";
         let col3 = "GetPresentIP()";
         let col4 = `await GetPresentIP().then(result=>{result.ip});`;
@@ -168,4 +175,68 @@
         });
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
+    const UseCaseGoScrollXY = () => {
+        let col1 = "";
+        let col2 = "GoScrollXY";
+        let col3 = "GoScrollXY(x,y)";
+        let col4 = "GoScrollXY(500,1000)";
+        let col5 = "<a href='#' onclick='javascript:GoScrollXY(500,1000);'>Result</a>";
+        let col6 =" - 스크롤을 X,Y 위치로 이동시킨다..";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseGoScrollTOP = () => {
+        let col1 = "";
+        let col2 = "GoScrollTOP";
+        let col3 = "GoScrollTOP()";
+        let col4 = "GoScrollTOP()";
+        let col5 = "<a href='#' onclick='javascript:GoScrollTOP();'>Result</a>";
+        let col6 =" - 스크롤을 가장 위로 이동시킨다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseCheckSpecialChar = () => {
+        let col1 = "";
+        let col2 = "CheckSpecialChar";
+        let col3 = "CheckSpecialChar(str)";
+        let col4 = "CheckSpecialChar('dd#dd')";
+        let col5 = CheckSpecialChar('dd#dd');
+        let col6 =" - 문자열에 특수기호가 있는지 검사해 bool로 리턴한다";
+        col6 += "<br/> - 특수기호 : ~!@#$%^&*_+=|\\[]{}:;,<.>/?'\"";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseCheckEmailStyle = () => {
+        let col1 = "";
+        let col2 = "CheckEmailStyle";
+        let col3 = "CheckEmailStyle(str)";
+        let col4 = "CheckEmailStyle('trumph@whitehouse.com')";
+        let col5 = CheckEmailStyle('trumph@whitehouse.com');
+        let col6 =" - 이메일 형식을 검사해 bool로 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransRound = () => {
+        let col1 = "";
+        let col2 = "TransRound";
+        let col3 = "TransRound(num,setLength)";
+        let col4 = "TransRound(123.456,2)";
+        let col5 = TransRound(123.456,2);
+        let col6 =" - 소수점 이하에 입력 길이만큼 반올림한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransRoundZero = () => {
+        let col1 = "";
+        let col2 = "TransRoundZero";
+        let col3 = "TransRoundZero(num,setLength)";
+        let col4 = "TransRoundZero(123.123,5)";
+        let col5 = TransRoundZero(123.456,5);
+        let col6 =" - 소수점 이하에 입력 길이만큼 0을 넣고 초과되면 반올림한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransAntiLog = () => {
+        let col1 = "";
+        let col2 = "TransAntiLog";
+        let col3 = "TransAntiLog(num,log)";
+        let col4 = "TransAntiLog(10,8)";
+        let col5 = TransAntiLog(15,16);
+        let col6 =" - 진수 변환 계산기.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }//수정해야함 10진수 이상 시 제대로 된 값이 안나오니까
 </script>
