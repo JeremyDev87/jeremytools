@@ -143,15 +143,67 @@ const TransRound = (num,setLength) => {
 }
 //진수 변환기
 const TransAntiLog = (num,log) => {
+    //11진법 이상 변환
+    const CharMaker = (val) => {
+        switch(val){
+            case '10':
+                val='a';
+                break;
+            case '11':
+                val='b';
+                break;
+            case '12':
+                val='c';
+                break;
+            case '13':
+                val='d';
+                break;
+            case '14':
+                val='e';
+                break;
+            case '15':
+                val='f';
+                break;
+            default:
+                break;
+        }
+        return val;
+    }
     num = num+0;
     log = log+0;
     let returnVal = '';
-    for(let i=0;num/log>=1;i++) {
-        console.log(num);
-        returnVal += String(parseInt(num/log));
-        num = num%log;
-        console.log(returnVal);
-        console.log(num);
+    for(let i=0;(num/log)>=1;i++) {
+        returnVal = CharMaker(String(num%log))+returnVal;
+        num = parseInt(num/log);
     }
-    return returnVal + String(num);
+    return CharMaker(String(num)) + returnVal;
+}
+//배열 정렬 함수
+const SortArray = (arr,order) => {
+    //a가 크면 true 작으면 false
+    const IsABig = (a,b) => {
+        a = a+0;
+        b = b+0;
+        if(a-b>0&&order=='a'){
+            return true;
+        }else if(a-b<0&&order=='d'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    let loopArr = arr;
+    let needLoop = true;
+    for(let j=0;needLoop;j++){
+        needLoop = false;
+        for(let i=0;i<arr.length;i++){
+            if(IsABig(loopArr[i],loopArr[i+1])){
+                let temp = loopArr[i];
+                loopArr[i]=loopArr[i+1];
+                loopArr[i+1]=temp;
+                needLoop = true;
+            }
+        }
+    }
+    return loopArr;
 }

@@ -63,6 +63,7 @@
         UseCaseTransRound();
         UseCaseTransRoundZero();
         UseCaseTransAntiLog();
+        UseCaseSortArray();
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -179,8 +180,8 @@
         let col1 = "";
         let col2 = "GoScrollXY";
         let col3 = "GoScrollXY(x,y)";
-        let col4 = "GoScrollXY(500,1000)";
-        let col5 = "<a href='#' onclick='javascript:GoScrollXY(500,1000);'>Result</a>";
+        let col4 = "GoScrollXY(100,100)";
+        let col5 = "<a href='#' onclick='javascript:GoScrollXY(100,100);'>Result</a>";
         let col6 =" - 스크롤을 X,Y 위치로 이동시킨다..";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
@@ -234,9 +235,19 @@
         let col1 = "";
         let col2 = "TransAntiLog";
         let col3 = "TransAntiLog(num,log)";
-        let col4 = "TransAntiLog(10,8)";
-        let col5 = TransAntiLog(15,16);
-        let col6 =" - 진수 변환 계산기.";
+        let col4 = "TransAntiLog(30,16)";
+        let col5 = TransAntiLog(30,16);
+        let col6 =" - 진수 변환 계산기, 2-16진법까지 가능하다.";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
-    }//수정해야함 10진수 이상 시 제대로 된 값이 안나오니까
+    }
+    const UseCaseSortArray = () => {
+        let col1 = "";
+        let col2 = "SortArray";
+        let col3 = "SortArray(arr,order)";
+        let col4 = "SortArray([3,4,2,5,1],'a')";
+        let col5 = SortArray([3,4,2,5,1],'a');
+        let col6 =" - 배열 순차 정렬 함수";
+        col6 += "<br/> - 오름차순 : a, 내림차순 : d";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
 </script>
