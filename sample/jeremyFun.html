@@ -69,7 +69,8 @@
         UseCaseCheckOnlyNum();
         UseCaseMakePopup();
         UseCaseCheckEmpty();
-        UseCaseMakeTrim();
+        UseCaseTransTrim();
+        UseCaseTransReplaceAll();
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -301,12 +302,21 @@
         let col6 =" - 빈공간이 있는지 검사해 bool로 리턴한다.";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
-    const UseCaseMakeTrim = () => {
+    const UseCaseTransTrim = () => {
         let col1 = "";
-        let col2 = "MakeTrim";
-        let col3 = "MakeTrim(str)";
-        let col4 = "MakeTrim(' aa bb ')";
-        let col5 = MakeTrim(' aa bb ');
+        let col2 = "TransTrim";
+        let col3 = "TransTrim(str)";
+        let col4 = "TransTrim(' aa bb ')";
+        let col5 = TransTrim(' aa bb ');
+        let col6 =" - 문자열 양끝의 빈값을 없애서 리턴한다";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransReplaceAll = () => {
+        let col1 = "";
+        let col2 = "TransReplaceAll";
+        let col3 = "TransReplaceAll(str,target,replace)";
+        let col4 = "TransReplaceAll('abcxyzefgxyzxyz','xyz','d')";
+        let col5 = TransReplaceAll('abcxyzefgxyzxyz','xyz','d');
         let col6 =" - 문자열 양끝의 빈값을 없애서 리턴한다";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }

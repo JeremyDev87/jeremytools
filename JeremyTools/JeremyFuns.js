@@ -372,7 +372,29 @@ const MakePopup = (URL,winName,width,height,remFeatures) => {
 const CheckEmpty = (str) => {
     return str == str.replace(/ /g, "") ? true : false;
 }
-//공백 제거 함수
-const MakeTrim = (str) => {
+//문자열 양 끝 공백 제거 함수
+const TransTrim = (str) => {
     return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+//문자열 중간 공백 제거 함수
+const TransReplaceAll = (str,target,replace) => {
+    let n1, n2, s1, s2;
+    while (true) {
+        if ( str=="" || target=="" ) break;
+        n1 = str.indexOf(target);
+        if ( n1 < 0 ) break;
+        n2 = n1 + target.length;
+        if ( n1==0 ) {
+            s1 = replace;
+        }else {
+            s1 = str.substring(0, n1) + replace;
+        }
+        if ( n2 >= str.length ) {
+            s2 = "";
+        }else {
+            s2 = str.substring(n2, str.length);
+        }
+        str = s1 + s2;
+    }
+    return str;
 }
