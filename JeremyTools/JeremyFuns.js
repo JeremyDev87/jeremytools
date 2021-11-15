@@ -368,6 +368,11 @@ const MakePopup = (URL,winName,width,height,remFeatures) => {
     popup.focus();
     return popup;
 }
+//공백 여부 판단 함수
 const CheckEmpty = (str) => {
     return str == str.replace(/ /g, "") ? true : false;
+}
+//공백 제거 함수
+const MakeTrim = (str) => {
+    return str.replace(/(^\s*)|(\s*$)/g, "");
 }

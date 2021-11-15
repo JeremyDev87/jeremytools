@@ -69,6 +69,7 @@
         UseCaseCheckOnlyNum();
         UseCaseMakePopup();
         UseCaseCheckEmpty();
+        UseCaseMakeTrim();
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -296,8 +297,17 @@
         let col2 = "CheckEmpty";
         let col3 = "CheckEmpty(str)";
         let col4 = "CheckEmpty('aa bb')";
-        let col5 = CheckEmpty('aabb');
-        let col6 =" - 빈공간이 있는지 검사해 bool로 리턴한다..";
+        let col5 = CheckEmpty('aa bb');
+        let col6 =" - 빈공간이 있는지 검사해 bool로 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseMakeTrim = () => {
+        let col1 = "";
+        let col2 = "MakeTrim";
+        let col3 = "MakeTrim(str)";
+        let col4 = "MakeTrim(' aa bb ')";
+        let col5 = MakeTrim(' aa bb ');
+        let col6 =" - 문자열 양끝의 빈값을 없애서 리턴한다";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
 
