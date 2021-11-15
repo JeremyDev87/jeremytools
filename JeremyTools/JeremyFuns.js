@@ -368,3 +368,6 @@ const MakePopup = (URL,winName,width,height,remFeatures) => {
     popup.focus();
     return popup;
 }
+const CheckEmpty = (str) => {
+    return str == str.replace(/ /g, "") ? true : false;
+}

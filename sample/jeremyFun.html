@@ -68,6 +68,7 @@
         UseCaseSHA256();
         UseCaseCheckOnlyNum();
         UseCaseMakePopup();
+        UseCaseCheckEmpty();
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -278,7 +279,7 @@
         let col3 = "CheckOnlyNum(num)";
         let col4 = "CheckOnlyNum('1a23')";
         let col5 = CheckOnlyNum('1a23');
-        let col6 =" - 숫자만 있는지 판단해 리턴한다.";
+        let col6 =" - 숫자만 있는지 검사해 bool로 리턴한다.";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseMakePopup = () => {
@@ -287,8 +288,18 @@
         let col3 = "MakePopup(URL,winName,width,height,remFeatures)";
         let col4 = "MakePopup('naver.com','test',500,500,'status=yes')";
         let col5 = `<a href='#' onclick="javascript:MakePopup('http://google.com','test',500,500,'status=yes');">Result</a>`;
-        let col6 =" - 팝업을 생성한다.";
+        let col6 =" - 팝업을 조건에 맞게 생성한다.";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
+    const UseCaseCheckEmpty = () => {
+        let col1 = "";
+        let col2 = "CheckEmpty";
+        let col3 = "CheckEmpty(str)";
+        let col4 = "CheckEmpty('aa bb')";
+        let col5 = CheckEmpty('aabb');
+        let col6 =" - 빈공간이 있는지 검사해 bool로 리턴한다..";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+
 
 </script>
