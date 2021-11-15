@@ -66,6 +66,8 @@
         UseCaseTransAntiLog();
         UseCaseSortArray();
         UseCaseSHA256();
+        UseCaseCheckOnlyNum();
+        UseCaseMakePopup();
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -270,4 +272,23 @@
         let col6 =" - SHA256로 암호화 한다.";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
+    const UseCaseCheckOnlyNum = () => {
+        let col1 = "";
+        let col2 = "CheckOnlyNum";
+        let col3 = "CheckOnlyNum(num)";
+        let col4 = "CheckOnlyNum('1a23')";
+        let col5 = CheckOnlyNum('1a23');
+        let col6 =" - 숫자만 있는지 판단해 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseMakePopup = () => {
+        let col1 = "";
+        let col2 = "MakePopup";
+        let col3 = "MakePopup(URL,winName,width,height,remFeatures)";
+        let col4 = "MakePopup('naver.com','test',500,500,'status=yes')";
+        let col5 = `<a href='#' onclick="javascript:MakePopup('http://google.com','test',500,500,'status=yes');">Result</a>`;
+        let col6 =" - 팝업을 생성한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+
 </script>

@@ -351,3 +351,20 @@ function SHA256(s){
     s = Utf8Encode(s);
     return binb2hex(core_sha256(str2binb(s), s.length * chrsz));
 }
+//숫자만 있는지 판단해 bool return
+const CheckOnlyNum = (value) => {
+    let regexp = /^[0-9]*$/;
+    return regexp.test(value);
+}
+//팝업 생성
+const MakePopup = (URL,winName,width,height,remFeatures) => {
+    let features = "";
+    if (typeof winName == "undefined") winName = "";
+    if (typeof width != "undefined") features += ((features) ? "," : "")+"width="+width;
+    if (typeof height != "undefined") features += ((features) ? "," : "")+"height="+height;
+    if (typeof remFeatures != "undefined") features += ((features) ? "," : "")+remFeatures;
+    if (features.indexOf("status") < 0) features += ",status=yes";
+    let popup = window.open(URL, winName, features);
+    popup.focus();
+    return popup;
+}
