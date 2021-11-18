@@ -456,7 +456,6 @@ const CheckNameType = (value) => {
     }
     return true;
 }
-
 // 포함 문자 변환 함수
 const TransStrFromRange = (str,target,range) => {
     var returnVal = "";
@@ -470,24 +469,126 @@ const TransStrFromRange = (str,target,range) => {
     }
     return returnVal;
 }
-
 // 소 --> 대문자 변환 함수
 const TransUpper = (str) => {
     let str1 = "abcdefghijklmnopqrstuvwxyz";
     let str2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     return TransStrFromRange(str,str1,str2);
 }
-
 // 대 --> 소문자 변환 함수
 const TransLower = (str) => {
     let str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let str2 = "abcdefghijklmnopqrstuvwxyz";
     return TransStrFromRange(str,str1,str2);
 }
-
-const BlockRightBtn = () => {
+//마우스 우클릭 방지
+const BlockMouseRightClick = () => {
     document.oncontextmenu  = () => {
-        alert("BlockRightBtn에 의한 우클릭 차단")
+        alert("BlockMouseRightClick 의한 우클릭 차단")
         return false;
+    }
+}
+//마우스 드래그 방지
+const BlockMouseDrag = () => {
+    document.ondragstart  = () => {
+        alert("BlockMouseDrag 의한 Drag 차단")
+        return false;
+    }
+}
+//쿠키 셋 함수
+const MakeCookie = (name,value,day) => {
+    let exdate = new Date(); 
+    day = day ?? 1;
+    exdate.setDate(exdate.getDate() + day); 
+    let cookie_value = escape(value) + ((day == null) ? '' : '; expires=' + exdate.toUTCString()); 
+    name = encodeURIComponent(name);
+    document.cookie = `"${name}=${cookie_value}"`; 
+}
+//쿠키 겟 함수
+const GetCookie = (name) => {
+    let search = `${name}=`
+    if (document.cookie.length > 0) {
+        let offset = document.cookie.indexOf(search)
+        if (offset != -1) {
+            offset += search.length
+            end = document.cookie.indexOf(";", offset)
+            if (end == -1)
+                end = document.cookie.length
+            return unescape(document.cookie.substring(offset, end));
+        }
+    }
+}
+//문자열 클립보드 저장 함수
+const MakeTextClipboard = (str) => {
+    const t = document.createElement("input");
+    document.body.appendChild(t);
+    t.value = str;
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+}
+//윤년 산출 함수
+const CheckLeafYear = (year) => {
+    return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
+};
+ //Canvas DataURL 을 Blob 으로 변경하는 함수
+const MakeDataURLtoBlob = (url) => {
+    let arr = url.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {
+        type: mime
+    });
+}
+//Cookie 삭제 함수
+const DeleteCookie = (name) => {
+    document.cookie = name + '= ; expires=' + new Date().toUTCString() + '; path=/';
+}
+//요일 산출 함수
+const TransDayValue = (time) => {
+    let timeObjMaker = new Date(time);
+    var day = timeObjMaker.getDay(); 
+    var week = new Array('일','월','화','수','목','금','토');
+    return week[day];
+}
+const MakeByteLen = (str) => {
+    return(str.length+(escape(str)+"%u").match(/%u/g).length-1);
+}
+const FindAddress = () => {
+    const daumPostcodeScript = document.createElement("script");
+    daumPostcodeScript.src =
+    "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+    daumPostcodeScript.onload = _loadFn;
+    document.body.appendChild(daumPostcodeScript);
+}
+
+const MakeDaumPostcode = () => {
+    OpenAddrPopup = () => {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var roadAddr = data.roadAddress;
+                var jibunAddr = data.jibunAddress;
+                document.getElementById('member_post').value = data.zonecode;
+                if(roadAddr !== ''){
+                    document.getElementById("member_addr").value = roadAddr;
+                }else if(jibunAddr !== ''){
+                    document.getElementById("member_addr").value = jibunAddr;
+                }
+            }
+        }).open();
+    }
+    if (!window.daum) {
+        const daumPostcodeScript = document.createElement("script");
+        daumPostcodeScript.src =
+        "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+        daumPostcodeScript.onload = OpenAddrPopup;
+        document.body.appendChild(daumPostcodeScript);
+    } else {
+        OpenAddrPopup();
     }
 }
