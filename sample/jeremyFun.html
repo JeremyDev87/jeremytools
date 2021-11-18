@@ -71,6 +71,19 @@
         UseCaseCheckEmpty();
         UseCaseTransTrim();
         UseCaseTransReplaceAll();
+        UseCaseTransUTF8FromStr();
+        UseCaseTransStrFromUTF8();
+        UseCaseTransASCIIFromStr();
+        UseCaseTransCharFromASCII();
+        UseCaseTransZeroAdd();
+        UseCaseCheckHangul();
+        UseCaseCheckNull();
+        UseCaseCheckNameType();
+        UseCaseTransStrFromRange();
+        UseCaseTransUpper();
+        UseCaseTransLower();
+        UseCaseBlockRightBtn();
+
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -288,8 +301,8 @@
         let col1 = "";
         let col2 = "MakePopup";
         let col3 = "MakePopup(URL,winName,width,height,remFeatures)";
-        let col4 = "MakePopup('naver.com','test',500,500,'status=yes')";
-        let col5 = `<a href='#' onclick="javascript:MakePopup('http://google.com','test',500,500,'status=yes');">Result</a>`;
+        let col4 = "MakePopup('naver.com','test',500,500,'scrollbar=1')";
+        let col5 = `<a href='#' onclick="javascript:MakePopup('http://google.com','test',500,500,'scrollbar=1');">Result</a>`;
         let col6 =" - 팝업을 조건에 맞게 생성한다.";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
@@ -320,6 +333,117 @@
         let col6 =" - 문자열 양끝의 빈값을 없애서 리턴한다";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
-
-
+    const UseCaseTransUTF8FromStr = () => {
+        let col1 = "";
+        let col2 = "TransUTF8FromStr";
+        let col3 = "TransUTF8FromStr(str)";
+        let col4 = "TransUTF8FromStr('안녕')";
+        let col5 = TransUTF8FromStr('안녕');
+        let col6 =" - 문자열을 UTF8로 encoding하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransStrFromUTF8 = () => {
+        let col1 = "";
+        let col2 = "TransStrFromUTF8";
+        let col3 = "TransStrFromUTF8(str)";
+        let col4 = "TransStrFromUTF8('%EC%95%88%EB%85%95')";
+        let col5 = TransStrFromUTF8('%EC%95%88%EB%85%95');
+        let col6 =" - UTF8을 문자열로 decoding하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransASCIIFromStr = () => {
+        let col1 = "";
+        let col2 = "TransASCIIFromStr";
+        let col3 = "TransASCIIFromStr(str)";
+        let col4 = "TransASCIIFromStr('abcd')";
+        let col5 = TransASCIIFromStr('abcd');
+        let col6 =" - 문자열을 ASCII 코드로 변환하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransCharFromASCII = () => {
+        let col1 = "";
+        let col2 = "TransCharFromASCII";
+        let col3 = "TransCharFromASCII(char)";
+        let col4 = "TransCharFromASCII('97')";
+        let col5 = TransCharFromASCII('97');
+        let col6 =" - ASCII값을 문자로 변환하여 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransZeroAdd = () => {
+        let col1 = "";
+        let col2 = "TransZeroAdd";
+        let col3 = "TransZeroAdd(value,maxLen)";
+        let col4 = "TransZeroAdd(5,4)";
+        let col5 = TransZeroAdd(5,4);
+        let col6 =" - 최대자리수까지 값 앞에 0을 채워 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseCheckHangul = () => {
+        let col1 = "";
+        let col2 = "CheckHangul";
+        let col3 = "CheckHangul(value)";
+        let col4 = "CheckHangul('한글')";
+        let col5 = CheckHangul('한글');
+        let col6 =" - 한글 여부를 검사해 bool로 리턴한다.";
+        col6 += "<br/> - 한글만 있는 경우 true 그 외 false로 린턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseCheckNull = () => {
+        let col1 = "";
+        let col2 = "CheckNull";
+        let col3 = "CheckNull(value)";
+        let col4 = "CheckNull()";
+        let col5 = CheckNull();
+        let col6 =" - NULL 여부를 검사해 bool로 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseCheckNameType = () => {
+        let col1 = "";
+        let col2 = "CheckNameType";
+        let col3 = "CheckNameType(value)";
+        let col4 = "CheckNameType(`' OR 1=1 --`)";
+        let col5 = CheckNameType(`' OR 1=1 --`);
+        let col6 =" - 특수기호, 숫자를 검사해 bool로 리턴한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransStrFromRange = () => {
+        let col1 = "";
+        let col2 = "TransStrFromRange";
+        let col3 = "TransStrFromRange(str,target,range)";
+        let col4 = "TransStrFromRange('abcde','ace','xyz')";
+        let col5 = TransStrFromRange('abcde','ace','xyz');
+        let col6 =" - 대상 문자열 중 target 내 포함되는 char를 range 범위 내 변경한다.";
+        col6 += "<br/> - index가 일치하는 문자로 변경한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransUpper = () => {
+        let col1 = "";
+        let col2 = "TransUpper";
+        let col3 = "TransUpper(str)";
+        let col4 = "TransUpper('abcde')";
+        let col5 = TransUpper('abcde');
+        let col6 =" - 대상 문자열 중 소문자를 대문자로 변경한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransLower = () => {
+        let col1 = "";
+        let col2 = "TransLower";
+        let col3 = "TransLower(str)";
+        let col4 = "TransLower('ABCDE')";
+        let col5 = TransLower('ABCDE');
+        let col6 =" - 대상 문자열 중 대문자를 소문자로 변경한다.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseBlockRightBtn = () => {
+        let col1 = "";
+        let col2 = "BlockRightBtn";
+        let col3 = "BlockRightBtn()";
+        let col4 = "BlockRightBtn()";
+        let col5 = "It is applied this page."
+        let col6 =" - 우클릭을 차단한다.";
+        BlockRightBtn();
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    
+    
 </script>

@@ -398,3 +398,96 @@ const TransReplaceAll = (str,target,replace) => {
     }
     return str;
 }
+//UTF8 Endcoding 함수
+const TransUTF8FromStr = (str) => {
+    return encodeURIComponent(str); 
+}
+//UTF8 Decoding 함수
+const TransStrFromUTF8 = (str) => {
+    return decodeURIComponent(str); 
+}
+//문자열 ASCII코드 변환 함수
+const TransASCIIFromStr = (str) => {
+    let returnVal = "";
+    let strArr = str.split("");
+    strArr.forEach((a)=>{
+        returnVal += a.charCodeAt(0);
+    })
+    return returnVal
+}
+//ASCII코드 문자 변환 함수
+const TransCharFromASCII = (char) => {
+    return String.fromCharCode(char);
+}
+//자릿수 0 추가 함수
+const TransZeroAdd = (value,maxLen) => {
+    value += '';
+    let valLen = value.length;
+    while(valLen<maxLen) {
+        value = '0'+value;
+        valLen = value.length;
+    }
+    return value;
+}
+//한글 확인 함수 
+const CheckHangul = (value) => {
+    let bit = '';
+    value += '';
+
+    for(let i=0;i<value.length;i++) {
+        bit = value.charAt(i);
+        if(escape(bit).length <= 4){
+            return false;
+        }
+    }
+    return true;
+}
+//입력값이 Null인지 확인
+const CheckNull = (value) => {
+    return value == null || value == "" ? true : false;
+}
+//숫자특수기호 차단
+const CheckNameType = (value) => {
+    let regexp = '0123456789~!#$%^&*()_-+=|{}[]<>,./?@';
+    for (var i = 0; i < value.length; i++) {
+        if (regexp.indexOf(value.charAt(i)) != -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// 포함 문자 변환 함수
+const TransStrFromRange = (str,target,range) => {
+    var returnVal = "";
+    for(let i = 0; i < str.length; i++) {
+        let value = str.charAt(i);
+        let index = target.indexOf(value);
+        if(index >= 0){
+            value = range.charAt(index);
+        } 
+        returnVal += value;
+    }
+    return returnVal;
+}
+
+// 소 --> 대문자 변환 함수
+const TransUpper = (str) => {
+    let str1 = "abcdefghijklmnopqrstuvwxyz";
+    let str2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    return TransStrFromRange(str,str1,str2);
+}
+
+// 대 --> 소문자 변환 함수
+const TransLower = (str) => {
+    let str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let str2 = "abcdefghijklmnopqrstuvwxyz";
+    return TransStrFromRange(str,str1,str2);
+}
+
+const BlockRightBtn = () => {
+    document.oncontextmenu  = () => {
+        alert("BlockRightBtn에 의한 우클릭 차단")
+        return false;
+    }
+}
