@@ -559,13 +559,6 @@ const TransDayValue = (time) => {
 const MakeByteLen = (str) => {
     return(str.length+(escape(str)+"%u").match(/%u/g).length-1);
 }
-const FindAddress = () => {
-    const daumPostcodeScript = document.createElement("script");
-    daumPostcodeScript.src =
-    "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
-    daumPostcodeScript.onload = _loadFn;
-    document.body.appendChild(daumPostcodeScript);
-}
 
 const MakeDaumPostcode = () => {
     OpenAddrPopup = () => {
