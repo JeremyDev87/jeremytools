@@ -4,9 +4,10 @@
 
 ---
 
-> Function List
-
+- A collection of useful javascript functions
 - Detailed usage can be found in the Sample/jeremyFun.html
+
+> Function List
 
 1. GetRandom
 2. GetRandomStr
