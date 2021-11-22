@@ -94,6 +94,9 @@
         UseCaseTransDayValue();
         UseCaseMakeByteLen();
         UseCaseMakeDaumPostcode();
+        UseCaseTransObjToArr();
+        UseCaseTransObjToJSON();
+        UseCaseTransArrtoObj();
     }
     const MakeTablePart = (col1,col2,col3,col4,col5,col6) =>{
         let tdMaker = document.createElement('tr');
@@ -491,7 +494,7 @@
         let col3 = "DeleteCookie(url)";
         let col4 = "DeleteCookie('http://localhost...')";
         let col5 = "No Sample."
-        let col6 =" - Canvas의 dataURL을 Blob으로 변환하여 리턴한다.";
+        let col6 =" - Cookie를 삭제한다.";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
     const UseCaseMakeTextClipboard = () => {
@@ -547,6 +550,55 @@
         let col5 = `<a href='#' onclick="javascript:MakeDaumPostcode();">Result</a>`;
         let col6 =" - 도로명 주소 검색 팝업 실행한다.";
         col6 +="<br/> - 카카오 주소검색 CDN 활용.";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransObjToArr = () => {
+        let col1 = "";
+        let col2 = "TransObjToArr";
+        let col3 = "TransObjToArr(obj)";
+        let col4 = "const object1 = {";
+        col4 += "<br/>    a: 'somestring',";
+        col4 += "<br/>    b: 42,";
+        col4 += "<br/>    c: false";
+        col4 += "<br/>};";
+        col4 += "<br/> TransObjToArr(object)";
+        const object1 = {
+            a: 'somestring',
+            b: 42,
+            c: false
+        };
+        let col5 = TransObjToArr(object1);
+        let col6 =" - Object를 Array로 변환하여 리턴한다";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransObjToJSON = () => {
+        let col1 = "";
+        let col2 = "TransObjToJSON";
+        let col3 = "TransObjToJSON(obj)";
+        let col4 = "const object1 = {";
+        col4 += "<br/>    a: 'somestring',";
+        col4 += "<br/>    b: 42,";
+        col4 += "<br/>    c: false";
+        col4 += "<br/>};";
+        col4 += "<br/> TransObjToJSON(object)";
+        const object1 = {
+            a: 'somestring',
+            b: 42,
+            c: false
+        };
+        let col5 = TransObjToJSON(object1);
+        let col6 =" - Object를 JSON으로 변환하여 리턴한다";
+        MakeTablePart(col1,col2,col3,col4,col5,col6);
+    }
+    const UseCaseTransArrtoObj = () => {
+        let col1 = "";
+        let col2 = "TransArrtoObj";
+        let col3 = "TransArrtoObj(arr)";
+        let col4 = "const array1 = ['a','b','c']";
+        col4 += "<br/> TransArrtoObj(object)";
+        const array1 = ['a','b','c'];
+        let col5 = TransArrtoObj(array1);
+        let col6 =" - Array를 Object로 변환하여 리턴한다";
         MakeTablePart(col1,col2,col3,col4,col5,col6);
     }
 

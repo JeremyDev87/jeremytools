@@ -592,3 +592,23 @@ const MakeDaumPostcode = () => {
         OpenAddrPopup();
     }
 }
+//오브젝트를 배열로 변경하는 함수
+const TransObjToArr = (obj) => {
+    let returnVal = new Array();
+    for (const [key, value] of Object.entries(obj)) {
+        returnVal.push([key,value]);
+    }
+    return returnVal;
+}
+//오브젝트를 JSON으로 변경하는 함수
+const TransObjToJSON = (obj) => {
+    return JSON.stringify(obj);
+}
+//배열을 오브젝트로 변경하는 함수
+const TransArrtoObj = (arr) => {
+    let returnVal = new Object();
+    for(let i = 0; i < arr.length;i++){
+        returnVal[i] = arr[i];
+    }
+    return returnVal;
+}
